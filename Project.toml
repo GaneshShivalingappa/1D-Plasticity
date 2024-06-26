@@ -1,0 +1,11 @@
+[deps]
+FFTW = "7a1cc6ca-52ef-59f5-83cd-3a7055c09341"
+GLMakie = "e9467ef8-e4e7-5192-8a1a-b1aee30e663a"
+LazySets = "b4f0291d-fe17-52bc-9479-3d1a343d9043"
+MPI = "da04e1cc-30fd-572f-bb4f-1f8673147195"
+PencilArrays = "0e08944d-e94e-41b1-9406-dcf66b6a9d2e"
+PencilFFTs = "4a48f351-57a6-4416-9ec4-c37015456aae"
+Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
+Polyhedra = "67491407-f73d-577b-9b50-8179a7c68029"
+Tensors = "48a634ad-e948-5137-8d70-aa71f2a747f4"
+WGLMakie = "276b4fcb-3e11-5398-bf8b-a0c2d153d008"
