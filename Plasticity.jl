@@ -34,6 +34,7 @@ function Isotropic_Hardening(ϵ, σₒ, E, H_iso)
 return σ
 end
 
+# Function for kinematic hardening
 function Kinematic_Hardening(ϵ, σₒ, E, H_kin)
     σ = zeros(length(ϵ))
     εₚ = 0.0
@@ -56,6 +57,7 @@ function Kinematic_Hardening(ϵ, σₒ, E, H_kin)
 return σ
 end
 
+# Function for combined isotropic and kinematic hardening
 function Combined_Hardening(ϵ, σₒ, E, H_iso, H_kin)
     σ = zeros(length(ϵ))
     εₚ = 0.0
@@ -79,11 +81,13 @@ function Combined_Hardening(ϵ, σₒ, E, H_iso, H_kin)
 return σ
 end
 
-σ_iso = Isotropic_Hardening(ϵ, σₒ, E, H_iso)
-σ_kin = Kinematic_Hardening(ϵ, σₒ, E, H_kin)
-σ_com = Combined_Hardening(ϵ, σₒ, E, H_iso, H_kin)
+# σ_iso = Isotropic_Hardening(ϵ, σₒ, E, H_iso)
+# σ_kin = Kinematic_Hardening(ϵ, σₒ, E, H_kin)
 σ_com_pla = Combined_Hardening(ϵ, σₒ, E, 0.0, 0.0)
-plot(ϵ, σ_com_pla, label="Perfect Plasticity", xlabel="ϵ", ylabel="σ", title="Plot of σ vs ϵ")
-plot!(ϵ, σ_iso, label="Isotropic", xlabel="ϵ", ylabel="σ", title="Plot of σ vs ϵ")
-plot!(ϵ, σ_kin, label="Kinematic", xlabel="ϵ", ylabel="σ", title="Plot of σ vs ϵ")
-plot!(ϵ, σ_com, label="Combined", xlabel="ϵ", ylabel="σ", title="Plot of σ vs ϵ")
+σ_iso = Combined_Hardening(ϵ, σₒ, E, H_iso, 0.0)
+σ_kin = Combined_Hardening(ϵ, σₒ, E, 0.0, H_kin)
+σ_com = Combined_Hardening(ϵ, σₒ, E, H_iso, H_kin)
+plot(ϵ, σ_com_pla, label="Perfect Plasticity", xlabel="ϵ", ylabel="σ", title="σ vs ϵ")
+plot!(ϵ, σ_iso, label="Isotropic", xlabel="ϵ", ylabel="σ", title="σ vs ϵ")
+plot!(ϵ, σ_kin, label="Kinematic", xlabel="ϵ", ylabel="σ", title="σ vs ϵ")
+plot!(ϵ, σ_com, label="Combined", xlabel="ϵ", ylabel="σ", title="σ vs ϵ")
